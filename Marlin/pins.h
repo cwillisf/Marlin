@@ -172,6 +172,8 @@
   #include "pins_MKS_13.h"
 #elif MB(SAINSMART_2IN1)
   #include "pins_SAINSMART_2IN1.h"
+#elif MB(MB_MEGAPI_LBOT)
+  #include "pins_MB_LaserBot.h"
 #else
   #error "Unknown MOTHERBOARD value set in Configuration.h"
 #endif

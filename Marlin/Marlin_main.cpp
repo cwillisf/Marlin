@@ -371,6 +371,12 @@ static const char *injected_commands_P = NULL;
   TempUnit input_temp_units = TEMPUNIT_C;
 #endif
 
+// Laser support variables:
+int g_laster = 0;
+unsigned char g_status = 1;
+unsigned char g_reback = 0;
+
+
 /**
  * Feed rates are often configured with mm/m
  * but the planner and stepper like mm/s units.
@@ -8121,6 +8127,27 @@ void process_next_command() {
           break;
       #endif // ULTIPANEL
 
+    case 3://M3 laser on
+        if (code_seen('S')) {//M3 SXXX
+	    g_laster = code_value_int(); 
+	    analogWrite(10,g_laster);             
+	    g_reback = 1;
+	    }
+       break;
+   case 4://M4 laser
+        if (code_seen('P')) {
+	    g_laster = code_value_int(); 
+	    analogWrite(10,g_laster);             
+	    g_reback = 1;
+        }
+	break;
+    case 5://M5 laser off
+	analogWrite(10,0);//off
+	break;
+   case 9://M09
+   
+   break;
+
       case 17: // M17: Enable all stepper motors
         gcode_M17();
         break;
@@ -10289,6 +10316,10 @@ void setup() {
 
   setup_homepin();
 
+  pinMode(10, OUTPUT); // @TODO: SV: WHAT IS THIS FOR?
+  analogWrite(10, 0);
+
+  
   #if PIN_EXISTS(STAT_LED_RED)
     OUT_WRITE(STAT_LED_RED_PIN, LOW); // turn it off
   #endif
@@ -10303,7 +10334,7 @@ void setup() {
     pinMode(RGB_LED_B_PIN, OUTPUT);
   #endif
 
-  lcd_init();
+    //lcd_init();
   #if ENABLED(SHOW_BOOTSCREEN)
     #if ENABLED(DOGLCD)
       safe_delay(BOOTSCREEN_TIMEOUT);
