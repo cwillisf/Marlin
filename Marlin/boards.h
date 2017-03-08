@@ -95,6 +95,9 @@
 #define BOARD_BAM_DICE_DUE      402  // 2PrintBeta BAM&DICE Due with STK drivers
 #define BOARD_BQ_ZUM_MEGA_3D    503  // bq ZUM Mega 3D
 
+#define BOARD_MB_MEGAPI_LBOT    532  // MakeBlock MegaPi - LaserBot setup
+
 #define MB(board) (MOTHERBOARD==BOARD_##board)
 
 #endif //__BOARDS_H
+
