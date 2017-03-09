@@ -44,18 +44,17 @@
 //
 // Limit Switches
 //
-#define X_MIN_PIN          24
-
-#define Y_MIN_PIN          25
-
-#define Z_MIN_PIN          26
-#define Z_MAX_PIN          26
+// DIO60 == PF6 =~ A7, DIO61 == PF7 =~ A7
+#define X_MIN_PIN          60
+#define Y_MIN_PIN          61
+#define Z_MIN_PIN          -1
+#define Z_MAX_PIN          -1
 
 //
 // Z Probe (when not Z_MIN_PIN)
 //
 #ifndef Z_MIN_PROBE_PIN
-  #define Z_MIN_PROBE_PIN  32
+  #define Z_MIN_PROBE_PIN  -1
 #endif
 
 #define SLED_PIN           -1
@@ -80,13 +79,8 @@
 
 #define E0_STEP_PIN         5
 #define E0_DIR_PIN          4
-#define E0_ENABLE_PIN      59//A5
+#define E0_ENABLE_PIN      59
 #define E0_CS_PIN          -1
-
-#define E1_STEP_PIN        -1
-#define E1_DIR_PIN         -1
-#define E1_ENABLE_PIN      -1
-#define E1_CS_PIN          -1
 
 //
 // Microstepping settings
@@ -119,9 +113,9 @@
 
 
 //
-// Temperature Sensors
+// Temperature Sensors ( use analogIn numbering scheme here! )
 //
-#define TEMP_0_PIN          6   // Analog Input
+#define TEMP_0_PIN         15   // Analog Input
 #define TEMP_1_PIN         -1   // Analog Input
 #define TEMP_BED_PIN       -1   // Analog Input
 
@@ -134,9 +128,6 @@
 #define KILL_PIN           -1
 
 #define LED_PIN            13
-
-// external power supply pin:
-//#define PS_ON_PIN          12
 
 #define HEATER_0_PIN     10 // Laser.. / power output 1
 #define HEATER_1_PIN       -1
