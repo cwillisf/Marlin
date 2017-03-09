@@ -486,8 +486,15 @@
    Override with M92
                                         X, Y, Z, E0 [, E1[, E2[, E3]]]
 */
+/* MakeBlock uses 
+ * 2.032mm pitch belts
+ * 18 tooth pulleys
+ * 1.8 degree / 200 step motors
+ * microstep is 8 it seems.
+ */
+
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 4000, 500 }
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {88.9*2, 88.9*2, 80, 760*1.1}
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {43.74, 43.74, 760*1.1}
 
 /**
    Default Max Feed Rate (mm/s)
