@@ -8127,26 +8127,26 @@ void process_next_command() {
           break;
       #endif // ULTIPANEL
 
-    case 3://M3 laser on
-        if (code_seen('S')) {//M3 SXXX
+        case 3:   // M3 laser on
+          if (code_seen('S')) {//M3 SXXX
 	    g_laster = code_value_int(); 
 	    analogWrite(10,g_laster);             
 	    g_reback = 1;
-	    }
-       break;
-   case 4://M4 laser
+	  }
+          break;
+       case 4:   // M4 laser
         if (code_seen('P')) {
 	    g_laster = code_value_int(); 
 	    analogWrite(10,g_laster);             
 	    g_reback = 1;
         }
 	break;
-    case 5://M5 laser off
+    case 5:     // M5 laser off
 	analogWrite(10,0);//off
 	break;
+	
    case 9://M09
-   
-   break;
+     break;
 
       case 17: // M17: Enable all stepper motors
         gcode_M17();
