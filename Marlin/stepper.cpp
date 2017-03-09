@@ -950,6 +950,16 @@ void Stepper::init() {
     E_AXIS_INIT(3);
   #endif
 
+    // initialize reset pins to enable drivers (needed for MakeBlock MegaPi):
+  #if PIN_EXISTS(X_RESET)
+    SET_OUTPUT(X_RESET_PIN);
+    WRITE(X_RESET_PIN, 1);
+  #endif
+  #if PIN_EXISTS(Y_RESET)
+    SET_OUTPUT(Y_RESET_PIN);
+    WRITE(Y_RESET_PIN, 1);
+  #endif
+
   // waveform generation = 0100 = CTC
   CBI(TCCR1B, WGM13);
   SBI(TCCR1B, WGM12);
