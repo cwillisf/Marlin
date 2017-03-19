@@ -42,6 +42,11 @@
 
 
 //
+// Laser diode PWM driving output
+//
+#define LASER_PIN          10
+
+//
 // Limit Switches
 //
 // DIO60 == PF6 =~ A7, DIO61 == PF7 =~ A7
@@ -115,20 +120,20 @@
 //
 // Temperature Sensors ( use analogIn numbering scheme here! )
 //
-#define TEMP_0_PIN         15   // Analog Input
+#define TEMP_0_PIN         14   // Analog Input
 #define TEMP_1_PIN         -1   // Analog Input
 #define TEMP_BED_PIN       -1   // Analog Input
 
 
 #define SDPOWER            -1
-#define SDSS               63//A9
+#define SDSS               -1
 //#define LED_PIN            -1
-#define FAN_PIN            23
+#define FAN_PIN            -1
 #define PS_ON_PIN          -1
 #define KILL_PIN           -1
 
 #define LED_PIN            13
 
-#define HEATER_0_PIN     10 // Laser.. / power output 1
+#define HEATER_0_PIN       62 // need some non-conflicting port; unused.
 #define HEATER_1_PIN       -1
 #define HEATER_2_PIN       -1
