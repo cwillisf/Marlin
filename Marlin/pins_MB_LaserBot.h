@@ -137,3 +137,11 @@
 #define HEATER_0_PIN       62 // need some non-conflicting port; unused.
 #define HEATER_1_PIN       -1
 #define HEATER_2_PIN       -1
+
+
+
+#if ENABLED(SPINDLE_ENABLE)
+//#define SPINDLE_DIR_PIN    10 // this is a n.c.
+#define SPINDLE_ENABLE_PIN 10  // should have a pull up
+#define SPINDLE_SPEED_PIN   -1  // must have a pull up
+#endif
