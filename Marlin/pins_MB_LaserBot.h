@@ -143,5 +143,5 @@
 #if ENABLED(SPINDLE_ENABLE)
 //#define SPINDLE_DIR_PIN    10 // this is a n.c.
 #define SPINDLE_ENABLE_PIN 10  // should have a pull up
-#define SPINDLE_SPEED_PIN   -1  // must have a pull up
+#define SPINDLE_SPEED_PIN  10  // must have a pull up
 #endif

@@ -1104,8 +1104,8 @@
 
 
   #define SPINDLE_ENABLE_INVERT  false   // set to "true" if  the spindle on/off function is reversed
-  #define SPINDLE_SPEED false             // set to true if your spindle controller supports setting the spindle speed
-  #define SPINDLE_SPEED_INVERT  true   // set to "true" if the spindle speeds up when you want it to go slower
+  #define SPINDLE_SPEED true             // set to true if your spindle controller supports setting the spindle speed
+  #define SPINDLE_SPEED_INVERT  false   // set to "true" if the spindle speeds up when you want it to go slower
   #define SPINDLE_POWER_UP_DELAY  5    // delay in seconds to allow the spindle to come up to speed
   #define SPINDLE_POWER_DOWN_DELAY  5    // delay in seconds to allow the spindle to stop
   #define DIRECTION_CHANGE  false        // set to true if your spindle controller supports changing spindle direction
