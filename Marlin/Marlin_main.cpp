@@ -4689,7 +4689,7 @@ inline void gcode_G92() {
 inline void delay_for_spindle_power_up() {
   refresh_cmd_timeout();
   // wait for spindle to come up to speed
-  while (PENDING(millis(), SPINDLE_POWER_UP_DELAY * 1000 + previous_cmd_ms)) idle();
+  while (PENDING(millis(), SPINDLE_POWER_UP_DELAY + previous_cmd_ms)) idle();
 }
 
 inline void delay_for_spindle_power_down() {
@@ -4738,6 +4738,11 @@ inline void gcode_M3_M4(bool is_M3) {
     
       
     float spindle_speed = code_seen('S') ? code_value_float() : 0;
+
+    if (code_seen('P')) {                // MakeBlock MLaser uses 'P' with 0..255
+      spindle_speed = code_value_float(); 
+    }
+    
     if (spindle_speed == 0) {
       WRITE(SPINDLE_ENABLE_PIN, !SPINDLE_ENABLE_INVERT);  //turn spindle off (active low);
       delay_for_spindle_power_down();
@@ -4751,6 +4756,8 @@ inline void gcode_M3_M4(bool is_M3) {
       WRITE(SPINDLE_ENABLE_PIN, SPINDLE_ENABLE_INVERT);  // turn spindle on (active low)
       analogWrite(SPINDLE_SPEED_PIN, ocr_val & 0xFF);  //only write lowest byte
       delay_for_spindle_power_up();
+  SERIAL_ECHO_START;
+  SERIAL_ECHOLNPAIR("M4: ocrval ", ocr_val);
     }
   }
 #else
@@ -4765,6 +4772,7 @@ inline void gcode_M3_M4(bool is_M3) {
 inline void gcode_M5() {
   stepper.synchronize();   // wait until previous movement commands (G0, G1, G2 & G3) have completed before turning spindle off
   WRITE(SPINDLE_ENABLE_PIN, !SPINDLE_ENABLE_INVERT);  // turn spindle off
+  analogWrite(SPINDLE_SPEED_PIN, 0);  //only write lowest byte
   delay_for_spindle_power_down();
 }
 #endif // SPINDLE_ENABLE
