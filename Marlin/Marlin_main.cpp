@@ -4712,6 +4712,8 @@ inline void ocr_val_mode() {
   analogWrite(SPINDLE_SPEED_PIN, spindle_speed);
 }
 
+static int16_t spindle_old_ocrval=0;
+
 inline void gcode_M3_M4(bool is_M3) {
   
   stepper.synchronize();   // wait until previous movement commands (G0, G1, G2 & G3) have completed before playing with the spindle
@@ -4745,6 +4747,7 @@ inline void gcode_M3_M4(bool is_M3) {
     
     if (spindle_speed == 0) {
       WRITE(SPINDLE_ENABLE_PIN, !SPINDLE_ENABLE_INVERT);  //turn spindle off (active low);
+      analogWrite(SPINDLE_SPEED_PIN, 0);  
       delay_for_spindle_power_down();
     }
     else {
@@ -4772,7 +4775,7 @@ inline void gcode_M3_M4(bool is_M3) {
 inline void gcode_M5() {
   stepper.synchronize();   // wait until previous movement commands (G0, G1, G2 & G3) have completed before turning spindle off
   WRITE(SPINDLE_ENABLE_PIN, !SPINDLE_ENABLE_INVERT);  // turn spindle off
-  analogWrite(SPINDLE_SPEED_PIN, 0);  //only write lowest byte
+  analogWrite(SPINDLE_SPEED_PIN, 0);  
   delay_for_spindle_power_down();
 }
 #endif // SPINDLE_ENABLE
