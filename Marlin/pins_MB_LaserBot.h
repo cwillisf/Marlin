@@ -50,8 +50,8 @@
 // Limit Switches
 //
 // DIO60 == PF6 =~ A7, DIO61 == PF7 =~ A7
-#define X_MIN_PIN          60
-#define Y_MIN_PIN          61
+#define X_MIN_PIN          61
+#define Y_MIN_PIN          60
 #define Z_MIN_PIN          -1
 #define Z_MAX_PIN          -1
 
@@ -67,15 +67,15 @@
 //
 // Steppers
 //
-#define X_STEP_PIN         12
-#define X_DIR_PIN          11
-#define X_ENABLE_PIN       35
-#define X_CS_PIN           -1
-
-#define Y_STEP_PIN         8
-#define Y_DIR_PIN          7
-#define Y_ENABLE_PIN       36
+#define Y_STEP_PIN         12
+#define Y_DIR_PIN          11
+#define Y_ENABLE_PIN       35
 #define Y_CS_PIN           -1
+
+#define X_STEP_PIN         8
+#define X_DIR_PIN          7
+#define X_ENABLE_PIN       36
+#define X_CS_PIN           -1
 
 #define Z_STEP_PIN         9
 #define Z_DIR_PIN          6
@@ -91,17 +91,17 @@
 // Microstepping settings
 //
 
-#define X_MS1_PIN         34
-#define X_MS2_PIN         33
-#define X_MS3_PIN         32
-#define X_RESET_PIN       31
-#define X_SLEEP_PIN       18
+#define Y_MS1_PIN         34
+#define Y_MS2_PIN         33
+#define Y_MS3_PIN         32
+#define Y_RESET_PIN       31
+#define Y_SLEEP_PIN       18
 
-#define Y_MS1_PIN         37
-#define Y_MS2_PIN         40
-#define Y_MS3_PIN         41
-#define Y_RESET_PIN       38
-#define Y_SLEEP_PIN       19
+#define X_MS1_PIN         37
+#define X_MS2_PIN         40
+#define X_MS3_PIN         41
+#define X_RESET_PIN       38
+#define X_SLEEP_PIN       19
 
 #define Z_MS1_PIN         43
 #define Z_MS2_PIN         47
