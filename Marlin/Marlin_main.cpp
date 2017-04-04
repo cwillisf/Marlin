@@ -4759,8 +4759,7 @@ inline void gcode_M3_M4(bool is_M3) {
       WRITE(SPINDLE_ENABLE_PIN, SPINDLE_ENABLE_INVERT);  // turn spindle on (active low)
       analogWrite(SPINDLE_SPEED_PIN, ocr_val & 0xFF);  //only write lowest byte
       delay_for_spindle_power_up();
-  SERIAL_ECHO_START;
-  SERIAL_ECHOLNPAIR("M4: ocrval ", ocr_val);
+      //SERIAL_ECHO_START;  SERIAL_ECHOLNPAIR("M4: ocrval ", ocr_val);
     }
   }
 #else
