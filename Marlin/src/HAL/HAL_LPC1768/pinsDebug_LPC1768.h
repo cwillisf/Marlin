@@ -28,12 +28,12 @@
  * Translation of routines & variables used by pinsDebug.h
  */
 
+#define NUMBER_PINS_TOTAL NUM_DIGITAL_PINS
+
 #define pwm_details(pin) pin = pin    // do nothing  // print PWM details
 #define pwm_status(pin) false //Print a pin's PWM status. Return true if it's currently a PWM pin.
 #define IS_ANALOG(P) (DIGITAL_PIN_TO_ANALOG_PIN(P) >= 0 ? 1 : 0)
 #define digitalRead_mod(p)  digitalRead(p)
-#define digitalPinToPort_DEBUG(p)  0
-#define digitalPinToBitMask_DEBUG(pin) 0
 #define PRINT_PORT(p) SERIAL_ECHO_SP(10);
 #define GET_ARRAY_PIN(p) pin_array[p].pin
 #define NAME_FORMAT(p) PSTR("%-##p##s")
