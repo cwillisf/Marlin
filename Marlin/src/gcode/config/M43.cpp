@@ -261,8 +261,8 @@ void GcodeSuite::M43() {
 
   // Get the range of pins to test or watch
   const uint8_t first_pin = PARSED_PIN_INDEX('P', 0),
-                last_pin = parser.seenval('P') ? first_pin : NUM_DIGITAL_PINS - 1;
-
+                last_pin = parser.seenval('P') ? first_pin : NUMBER_PINS_TOTAL - 1;
+                
   if (first_pin > last_pin) return;
 
   const bool ignore_protection = parser.boolval('I');
@@ -282,6 +282,7 @@ void GcodeSuite::M43() {
           pin_state[pin - first_pin] = analogRead(DIGITAL_PIN_TO_ANALOG_PIN(pin)); // int16_t pin_state[...]
         else
       //*/
+  
           pin_state[i - first_pin] = digitalRead(pin);
     }
 
@@ -301,6 +302,7 @@ void GcodeSuite::M43() {
               ? analogRead(DIGITAL_PIN_TO_ANALOG_PIN(pin)) : // int16_t val
               :
           //*/
+  
             digitalRead(pin);
         if (val != pin_state[i - first_pin]) {
           report_pin_state_extended(pin, ignore_protection, false);
