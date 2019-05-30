@@ -2056,6 +2056,16 @@ void Stepper::init() {
     E_AXIS_INIT(4);
   #endif
 
+  // initialize reset pins to enable drivers (needed for MakeBlock MegaPi):
+  #if PIN_EXISTS(X_RESET)
+    SET_OUTPUT(X_RESET_PIN);
+    WRITE(X_RESET_PIN, 1);
+  #endif
+  #if PIN_EXISTS(Y_RESET)
+    SET_OUTPUT(Y_RESET_PIN);
+    WRITE(Y_RESET_PIN, 1);
+  #endif
+
   // Init Stepper ISR to 122 Hz for quick starting
   HAL_timer_start(STEP_TIMER_NUM, 122); // OCR1A = 0x4000
 

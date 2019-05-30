@@ -15170,6 +15170,9 @@ void setup() {
     SET_INPUT_PULLUP(HOME_PIN);
   #endif
 
+  pinMode(10, OUTPUT); // @TODO: SV: WHAT IS THIS FOR?
+  analogWrite(10, 0);
+
   #if PIN_EXISTS(STAT_LED_RED)
     OUT_WRITE(STAT_LED_RED_PIN, LOW); // turn it off
   #endif
@@ -15201,8 +15204,8 @@ void setup() {
     fanmux_init();
   #endif
 
-  lcd_init();
-  lcd_reset_status();
+  //lcd_init();
+  //lcd_reset_status();
 
   #if ENABLED(SHOW_BOOTSCREEN)
     lcd_bootscreen();
